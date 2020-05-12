@@ -1,72 +1,60 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        slack-clone-app
-      </h1>
-      <h2 class="subtitle">
-        My phenomenal Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+    <div class="chats-container">
+      <!-- 1つのチャット -->
+      <div class="chat-container">
+        <div class="thumbnail-container">
+          <img src="https://pbs.twimg.com/profile_images/1131882065337602049/0JRUGd3S_400x400.jpg" />
+        </div>
+        <div class="message-container">
+          <div class="user-name">cohki0305</div>
+          <div class="message">今日も良い天気ですね</div>
+        </div>
+      </div>
+      <!-- 1つのチャット -->
+      <div class="chat-container">
+        <div class="thumbnail-container">
+          <img src="https://pbs.twimg.com/profile_images/1131882065337602049/0JRUGd3S_400x400.jpg" />
+        </div>
+        <div class="message-container">
+          <div class="user-name">cohki0305</div>
+          <div class="message">今日も良い天気ですね</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
   components: {
-    Logo
+
   }
 }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+<style scoped>
+/* ここから追加 */
+.chats-container {
+ padding: 16px;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.chat-container {
+ display: flex;
+ padding: 8px;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+.thumbnail-container {
+ margin-right: 16px;
 }
 
-.links {
-  padding-top: 15px;
+.thumbnail-container img {
+ width: 50px;
+ height: 50px;
+ border-radius: 10px;
+}
+
+.user-name {
+ font-weight: bold;
 }
 </style>
