@@ -13,7 +13,9 @@ export default {
         text: null
       }
     },
-    addMessage(){
+    addMessage(event){
+
+      if(event.keyCode === 229) { return }
       const channelId = this.$route.params.id
       db.collection('channels').doc(channelId).collection('messages').add({text: this.text})
         .then(()=>{
