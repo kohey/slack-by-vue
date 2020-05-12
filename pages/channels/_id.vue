@@ -18,6 +18,20 @@ export default {
   components: {
     Messages,
     ChatForm
+  },
+  data(){
+    return {
+      messages: []
+    }
+  },
+  mounted(){
+    const channelId = this.$route.params.id
+    db.collection('channels').doc(channelId).collection('messages').get()
+      .then((querySnapshot)=>{
+        querySnapshot.forEach((doc)=>{
+          this.messages.push({id: doc.id, ...doc.data()})
+        })
+      })
   }
 }
 </script>
