@@ -4,19 +4,19 @@
       <messages />
     </div>
     <div class="input-layout">
-      <div class="input-container">
-        <textarea></textarea>
-      </div>
+      <chat-form />
     </div>
   </div>
 </template>
 
 <script>
 import Messages from '~/components/Messages.vue'
+import ChatForm from '~/components/ChatForm.vue'
 
 export default {
   components: {
-    Messages
+    Messages,
+    ChatForm
   }
 }
 </script>
@@ -36,14 +36,4 @@ export default {
  height: 10%;
 }
 
-/* インプットエリア */
-.input-container {
- padding: 10px;
- height: 100%;
-}
-
-textarea {
- width: 100%;
- height: 100%;
-}
 </style>
