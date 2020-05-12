@@ -1,6 +1,13 @@
 <template>
   <div class="container">
-    <messages />
+    <div class="chats-layput">
+      <messages />
+    </div>
+    <div class="input-layout">
+      <div class="input-container">
+        <textarea></textarea>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,3 +20,30 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.container {
+ height: 100%;
+}
+
+.chats-layout {
+ overflow: scroll;
+ height: 90%;
+}
+
+.input-layout {
+ height: 10%;
+}
+
+/* インプットエリア */
+.input-container {
+ padding: 10px;
+ height: 100%;
+}
+
+textarea {
+ width: 100%;
+ height: 100%;
+}
+</style>
