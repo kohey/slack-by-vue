@@ -14,13 +14,16 @@ export default {
       }
     },
     addMessage(event){
-
-      if(event.keyCode === 229) { return }
+      if(this.keyDownedForJPConversion(event)) { return }
       const channelId = this.$route.params.id
       db.collection('channels').doc(channelId).collection('messages').add({text: this.text})
         .then(()=>{
           alert("メッセージを保存しました")
         })
+    },
+    keyDownedForJPConversion(event){
+      const codeForConversion = 229
+      return codeForConversion === event.keyCode
     }
   }
 }
