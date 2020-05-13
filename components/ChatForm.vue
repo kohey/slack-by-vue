@@ -1,5 +1,6 @@
 <template>
   <div class="input-container">
+    <img :src="user.photoURL" v-if="isAuthenticated" class="avatar">
     <textarea v-model="text" v-if="isAuthenticated" @keydown.enter="addMessage"></textarea>
     <textarea v-model="text" v-else @click="openLoginModal"></textarea>
     <el-dialog
@@ -30,6 +31,9 @@ export default {
     },
 
   computed:{
+    user(){
+      return this.$store.state.user
+    },
     isAuthenticated(){
       return this.$store.getters.isAuthenticated
     }
@@ -76,6 +80,12 @@ export default {
 .input-container {
  padding: 10px;
  height: 100%;
+ display: flex;
+}
+
+.avatar {
+ height: 100%;
+ width: auto;
 }
 
 textarea {
