@@ -1,6 +1,6 @@
 <template>
   <div class="input-container">
-    <textarea v-model="text" v-on:keydown.enter="addMessage"></textarea>
+    <textarea v-model="text" @click="openLoginModal" @keydown.enter="addMessage"></textarea>
     <el-dialog
       title="Tips"
       :visible.sync="dialogVisible"
@@ -20,11 +20,15 @@ Vue.use(ElementUI)
 export default {
   data(){
       return {
-        dialogVisible: true,
+        dialogVisible: false,
         text: null
       }
     },
   methods:{
+    openLoginModal(){
+      this.dialogVisible = true
+    },
+
     addMessage(event){
       if(this.keyDownedForJPConversion(event)) { return }
       const channelId = this.$route.params.id
