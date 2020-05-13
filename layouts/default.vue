@@ -5,7 +5,7 @@
       <p v-for="(value,key) in channels" :key="key">
         <nuxt-link :to="`/channels/${value.id}`">{{ value.name }}</nuxt-link>
       </p>
-      <p class="logout" @click="signOut">ログアウト</p>
+      <p v-if="isAuthenticated" class="logout" @click="signOut">ログアウト</p>
     </div>
     <div class="main-content"><nuxt /></div>
   </div>
@@ -28,6 +28,12 @@ export default {
          this.channels.push({id: doc.id, ...doc.data()})
        })
      })
+  },
+
+  computed:{
+    isAuthenticated(){
+      return this.$store.getters.isAuthenticated
+    }
   },
 
   methods:{
