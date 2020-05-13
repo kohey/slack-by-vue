@@ -14,6 +14,7 @@
 
 <script>
 import { db , firebase } from '~/plugins/firebase.js'
+import { mapMutations } from "vuex";
 import Vue from "vue";
 import ElementUI from "element-ui";
 import 'element-ui/lib/theme-chalk/index.css'
@@ -27,6 +28,7 @@ export default {
       }
     },
   methods:{
+    ...mapMutations(['setUser']),
     openLoginModal(){
       this.dialogVisible = true
     },
@@ -36,7 +38,7 @@ export default {
      firebase.auth().signInWithPopup(provider)
        .then((result) => {
          const user = result.user
-         console.log(user)
+         this.setUser(user)
          this.dialogVisible = false
        }).catch((error) => {
          window.alert(error)
