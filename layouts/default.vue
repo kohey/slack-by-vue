@@ -5,13 +5,14 @@
       <p v-for="(value,key) in channels" :key="key">
         <nuxt-link :to="`/channels/${value.id}`">{{ value.name }}</nuxt-link>
       </p>
+      <p class="logout" @click="signOut">ログアウト</p>
     </div>
     <div class="main-content"><nuxt /></div>
   </div>
 </template>
 
 <script>
-import { db } from '~/plugins/firebase'
+import { db , firebase } from '~/plugins/firebase'
 
 export default {
   data(){
@@ -19,6 +20,7 @@ export default {
       channels:[]
     }
   },
+
   mounted () {
    db.collection('channels').get()
      .then((querySnapshot) => {
@@ -26,7 +28,20 @@ export default {
          this.channels.push({id: doc.id, ...doc.data()})
        })
      })
- }
+  },
+
+  methods:{
+    signOut(){
+      firebase.auth().signOut()
+        .then(()=>{
+          window.alert("ログアウトしました")
+        })
+        .catch((e)=>{
+          window.alert("ログアウトに失敗しました")
+          consolo.log(e)
+        })
+    }
+  }
 }
 </script>
 
@@ -110,5 +125,11 @@ html {
  background: #F1F1F1;
 
  height: 100vh;
+}
+
+.logout {
+  position: absolute;
+  bottom: 10px;
+  cursor: pointer;
 }
 </style>
