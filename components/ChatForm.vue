@@ -14,7 +14,7 @@
 
 <script>
 import { db , firebase } from '~/plugins/firebase.js'
-import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
 import Vue from "vue";
 import ElementUI from "element-ui";
 import 'element-ui/lib/theme-chalk/index.css'
@@ -28,7 +28,7 @@ export default {
       }
     },
   methods:{
-    ...mapMutations(['setUser']),
+    ...mapActions(['setUser']),
     openLoginModal(){
       this.dialogVisible = true
     },
