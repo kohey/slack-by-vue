@@ -1,6 +1,7 @@
 <template>
   <div class="input-container">
-    <textarea v-model="text" @click="openLoginModal" @keydown.enter="addMessage"></textarea>
+    <textarea v-model="text" v-if="isAuthenticated" @keydown.enter="addMessage"></textarea>
+    <textarea v-model="text" v-else @click="openLoginModal"></textarea>
     <el-dialog
       title=""
       :visible.sync="dialogVisible"
@@ -27,6 +28,12 @@ export default {
         text: null
       }
     },
+
+  computed:{
+    isAuthenticated(){
+      return this.$store.getters.isAuthenticated
+    }
+  },
   methods:{
     ...mapActions(['setUser']),
     openLoginModal(){
@@ -39,6 +46,7 @@ export default {
        .then((result) => {
          const user = result.user
          this.setUser(user)
+         console.log("ログインしています")
          this.dialogVisible = false
        }).catch((error) => {
          window.alert(error)
