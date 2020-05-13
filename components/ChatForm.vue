@@ -3,7 +3,7 @@
     <textarea v-model="text" v-on:keydown.enter="addMessage"></textarea>
     <el-dialog
       title="Tips"
-      :visible="dialogVisible"
+      :visible.sync="dialogVisible"
       width="30%">
     <span>This is a message</span>
     </el-dialog>
