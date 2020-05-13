@@ -50,7 +50,6 @@ export default {
        .then((result) => {
          const user = result.user
          this.setUser(user)
-         console.log("ログインしています")
          this.dialogVisible = false
        }).catch((error) => {
          window.alert(error)
@@ -69,7 +68,7 @@ export default {
         }
         })
         .then(()=>{
-          alert("メッセージを保存しました")
+          this.text = null
         })
     },
     keyDownedForJPConversion(event){
