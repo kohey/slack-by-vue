@@ -94,6 +94,11 @@ html {
  padding: 20px;
 }
 
+.sidebar a {
+  color: #DDDDDD;
+}
+
+
 .sidebar p {
   color: #DDDDDD;
   padding-top: 4px;
