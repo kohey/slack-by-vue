@@ -13,6 +13,7 @@
 
 <script>
 import { db , firebase } from '~/plugins/firebase'
+import { mapActions } from 'vuex'
 
 export default {
   data(){
@@ -37,9 +38,11 @@ export default {
   },
 
   methods:{
+    ...mapActions(['setUser']),
     signOut(){
       firebase.auth().signOut()
         .then(()=>{
+          this.setUser(null)
           window.alert("ログアウトしました")
         })
         .catch((e)=>{
