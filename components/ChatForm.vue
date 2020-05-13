@@ -60,7 +60,14 @@ export default {
     addMessage(event){
       if(this.keyDownedForJPConversion(event)) { return }
       const channelId = this.$route.params.id
-      db.collection('channels').doc(channelId).collection('messages').add({text: this.text, createdAt: new Date().getTime()})
+      db.collection('channels').doc(channelId).collection('messages').add({
+        text: this.text,
+        createdAt: new Date().getTime(),
+        user: {
+          name: this.user.displayName,
+          thumbnail: this.user.photoURL
+        }
+        })
         .then(()=>{
           alert("メッセージを保存しました")
         })
